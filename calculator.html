@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculator</title>
     <style>
         *{
             margin: 0;
@@ -12,6 +12,7 @@
         }
         body{
             display: flex;
+            
             justify-content: center;
         }
         #container{
@@ -20,6 +21,7 @@
             height: 280px;
             padding: 10px;
             width: 200px;
+            
         }
         input{
             width: 30px;
@@ -27,13 +29,18 @@
             margin: 5px;
         }
         .row{
+
             display: flex;
             justify-content: space-between;
+        }
+        .row input{
+            box-shadow: 2px 2px 5px gray,-2px -2px 5px gray;
         }
         .display1{
             display: flex;
             justify-content: center;
             width: 100%;
+            margin-bottom: 5px;
         }
         .display1 input{
             width: 100%;
@@ -41,6 +48,9 @@
         }
         .equal{
             width: 75px;
+        }
+        .green{
+            color: rgb(153, 0, 170);
         }
         @media(max-width:450px){
             #container{
@@ -54,41 +64,57 @@
         <div class="display1">
             <input type="text" id="display">
         </div>
-        <div class="row">
-            <input type="button" value="AC" onclick="display.value='' ">
-            <input type="button" value="DE" onclick="display.value=display.value.toString().slice
+        
+        <div class="row" class="green">
+            <input type="button" value="AC" style="color: aqua;" onclick="display.value='' ">
+            <input type="button" value="DE" style="color: red;" onclick="display.value=display.value.toString().slice
             (0,-1) ">
-            <input type="button" value="." onclick="display.value+='.' ">
-            <input type="button" value="/" onclick="display.value+='/' ">
+            <input type="button" value="." class="green" onclick="display.value+='.' ">
+            <input type="button"  value="/" class="green" onclick="display.value+='/' ">
         </div>
         <div class="row">
             <input type="button" value="7" onclick="display.value+='7' ">
             <input type="button" value="8" onclick="display.value+='8' ">
             <input type="button" value="9" onclick="display.value+='9' ">
-            <input type="button" value="*" onclick="display.value+='*' ">
+            <input type="button" value="*" class="green" onclick="display.value+='*' ">
         </div>
         <div class="row">
             <input type="button" value="4" onclick="display.value+='4' ">
             <input type="button" value="5" onclick="display.value+='5' ">
             <input type="button" value="6" onclick="display.value+='6' ">
-            <input type="button" value="+" onclick="display.value+='+' ">
+            <input type="button" value="+" class="green" onclick="display.value+='+' ">
         </div>
         <div class="row">
             <input type="button" value="1" onclick="display.value+='1' ">
             <input type="button" value="2" onclick="display.value+='2' ">
             <input type="button" value="3" onclick="display.value+='3' ">
-            <input type="button" value="-" onclick="display.value+='-' ">
+            <input type="button" value="-" class="green" onclick="display.value+='-' ">
         </div>
         <div class="row">
             <input type="button" value="00" onclick="display.value+='00' ">
             <input type="button" value="0" onclick="display.value+='0' ">
-            <input type="button" value="=" class="equal" onclick="display.value=eval(display.value) ">
+            <input type="button" value="="  class="equal green" onclick="display.value=eval(display.value) ">
             
         </div>
            
     </div>
     <script>
         var display=document.getElementById('display');
+        document.addEventListener('keydown',function(event){
+            const key=event.key;
+            if((key>=0 && key<=9)||['+','-','*','/','.'].includes(key)){
+                display.value+=key;
+            }
+            else if(key==='Enter'){
+                display.value=eval(display.value);
+            }
+            else if(key==='Backspace'){
+                display.value=display.value.toString().slice(0,-1);
+            }
+            else if(key==='Escape'){
+                display.value='';
+            }
+        })
     </script>
 </body>
 </html>
