@@ -32,17 +32,17 @@
     <body>
 
         <h1>Rock Paper Scissor Game</h1>
-        <button onclick="playgame('Rock')"><img src="./image/rock-emoji.png" alt>
+        <button onclick="playgame('Rock')"><img src=".rock-emoji.png" alt>
         </button>&nbsp;&nbsp;&nbsp;&nbsp;
         <button onclick="playgame('Paper');
     ">
-            <img src="./image/paper-emoji.png" alt>
+            <img src="paper-emoji.png" alt>
         </button>&nbsp;&nbsp;&nbsp;&nbsp;
         <button onclick="playgame('Scissors');
     
     
     ">
-            <img src="./image/scissors-emoji.png" alt>
+            <img src="scissors-emoji.png" alt>
         </button>
         <p class="js_res"></p>
         <p class="js_move"></p>
@@ -96,8 +96,8 @@
 
 const moves= document.querySelector('.js_move');
 moves.innerHTML = ` you 
-            <img src = "./image/${player}-emoji.png" alt = "" >
-        .          <img src="./image/${computerMove}-emoji.png" alt=""> Computer`;
+            <img src = "${player}-emoji.png" alt = "" >
+        .          <img src="${computerMove}-emoji.png" alt=""> Computer`;
                     updatescore();
                     localStorage.setItem('score',JSON.stringify(score));
             // document.querySelector('.score').innerHTML = ` Won : ${score.win} Tie:  ${score.tie} Loss: ${score.loss}`
